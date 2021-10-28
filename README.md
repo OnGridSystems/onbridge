@@ -4,6 +4,22 @@
 
 This prototype WILL BE built during [BSC Gamefi Hackathon](https://hidorahacks.medium.com/application-guide-bsc-gamefi-hackathon-russia-eastern-europe-dc173c9250e9).
 
+## Progress
+
+* 28.11.2021 - submitted hackathon [application](https://bscscan.com/tx/0x023b101e6d9888891aff07afc85ce6b3998601ebb23e68e4c5e385379dd97e9b). Waiting for approval and here we BUIDL!
+
+## Architecture
+
+* **Contracts**: L1 bridge contract that receives and locks NFT on the origin network. L2 bridge contract that mints "twin" NFT on L2 net. 
+To migrate L2 NFT back to origin network, L2 bridge burns L2 token and L1 bridge unlocks the original NFT. Stack: EVM, Solidity, hardhat.
+
+* **Frontend DApp**: user initiates token operations (bridging from origin to L2 and back) using DApp UI build with awesome ReactJS, Ethers, Web3.
+
+* **Indexing Engine**: API that provides useful information for UI: Overall statistics, token lists, events, transactions history and a lot of other stuff 
+that improves quiality of life.
+
+* **Oracles**: Decentralized algorithm that observes the contract states on L1 and L2 and replicates the changes and events between the networks. Includes consensus rules and incentivation of fair behavior.
+
 ## License
 
 ```
