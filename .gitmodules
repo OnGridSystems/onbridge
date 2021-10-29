@@ -1,0 +1,9 @@
+[submodule "api"]
+	path = api
+	url = git@github.com:Onbridge-io/onbridge_api.git
+[submodule "app"]
+	path = app
+	url = git@github.com:Onbridge-io/onbridge_app.git
+[submodule "contracts"]
+	path = contracts
+	url = git@github.com:Onbridge-io/onbridge_contracts.git
