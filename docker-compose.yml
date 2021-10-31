@@ -1,0 +1,70 @@
+version: '3'
+services:
+
+  ingress:
+    build: ./ingress/
+    ports:
+      - 80:80
+    image: ingress
+    volumes:
+      - static:/static
+    restart: on-failure
+    depends_on:
+      - api
+      - app
+
+  api_db:
+    image: postgres
+    volumes:
+      - db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: '${DB_NAME}'
+      POSTGRES_USER: '${DB_USER}'
+      POSTGRES_PASSWORD: '${DB_PASSWORD}'
+
+  api:
+    image: api
+    build: ./api
+    volumes:
+      - static:/static/
+    environment:
+      DB_NAME: '${DB_NAME}'
+      DB_USER: '${DB_USER}'
+      DB_PASSWORD: '${DB_PASSWORD}'
+      DB_PORT: '5432'
+      DB_HOST: api_db
+      ADMIN_USER: '${ADMIN_USER}'
+      ADMIN_PASSWORD: '${ADMIN_PASSWORD}'
+    restart: on-failure
+    depends_on:
+      - api_db
+
+  indexer_l1:
+    image: api
+    build: ./api
+    environment:
+      UPSTREAM: '${UPSTREAM}'
+      TOKEN_ABI_FILENAME: 'erc721-abi.json'
+      TOKEN_ADDRESS: '${TOKEN_ADDRESS}'
+      DB_NAME: '${DB_NAME}'
+      DB_USER: '${DB_USER}'
+      DB_PASSWORD: '${DB_PASSWORD}'
+      DB_PORT: '5432'
+      DB_HOST: api_db
+    command: python3 indexer_L1.py
+    depends_on:
+      - api_db
+
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+      args:
+        REACT_APP_INFURA_ID: '${REACT_APP_INFURA_ID}'
+        REACT_APP_API_HOST: '${REACT_APP_API_HOST}'
+    image: app
+    restart: on-failure
+
+volumes:
+  static:
+  db:

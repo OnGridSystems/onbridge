@@ -4,6 +4,21 @@
 
 This prototype WILL BE built during [BSC Gamefi Hackathon](https://hidorahacks.medium.com/application-guide-bsc-gamefi-hackathon-russia-eastern-europe-dc173c9250e9).
 
+## Build and run
+
+```sh
+export UPSTREAM=https://rinkeby.infura.io/v3/<secret>
+export TOKEN_ABI_FILENAME=erc721-abi.json
+export TOKEN_ADDRESS=0x9d5eD1b12E2BB47E3bDdCC3638376B792b94530B
+export DB_USER=api
+export DB_PASSWORD=api
+export DB_NAME=api
+export ADMIN_USER=admin
+export ADMIN_PASSWORD=admin
+
+DOCKER_HOST=ssh://root@<host> docker compose up -d --build --force-recreate
+```
+
 ## Progress
 
 * 28.11.2021 - submitted hackathon [application](https://bscscan.com/tx/0x023b101e6d9888891aff07afc85ce6b3998601ebb23e68e4c5e385379dd97e9b). Waiting for approval and here we BUIDL!
