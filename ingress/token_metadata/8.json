@@ -1,0 +1,11 @@
+{
+    "name": "Neon Bear",
+    "description": "Bear that shines",
+    "image": "https://api.onbridge.io/token_metadata/8.jpeg",
+    "attributes": [
+      {
+        "trait_type": "name",
+        "value": "just noname bear"
+      }
+    ]
+  }
