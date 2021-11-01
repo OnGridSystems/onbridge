@@ -25,6 +25,12 @@ export ADMIN_USER=admin
 export ADMIN_PASSWORD=admin
 export REACT_APP_API_HOST=https://api.onbridge.io/api
 export SECRET_KEY=<secret>
+export PRIVATE_KEY=<secret>
+export L1_GAS_PRICE=18000000000
+export L2_GAS_PRICE=18000000000
+export L1_BRIDGE_ABI_FILENAME=bridge-abi-L1.json
+export L2_BRIDGE_ABI_FILENAME=bridge-abi-L2.json
+
 
 DOCKER_HOST=ssh://root@<host> docker compose up -d --build --force-recreate
 ```
