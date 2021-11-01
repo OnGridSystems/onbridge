@@ -1,17 +1,14 @@
 import { ethers, Wallet } from "ethers";
 
-export async function sendYourselfZeroETH() {
-  const tx = {
-    to: "0x8ba1f109551bD432803012645Ac136ddd64DBA72",
-    value: ethers.utils.parseEther("0.0")
-  }
-
-  const mnemonic = "song wave piece winter defense aerobic barely girl alien six wave aspect"
-  const walletMnemonic = Wallet.fromMnemonic(mnemonic)
-  const walletPrivateKey = new Wallet(walletMnemonic.privateKey)
+export async function sendYourselfZeroETH(skill) {
   const provider = new ethers.providers.Web3Provider(window.ethereum)
-
-  const wallet = walletMnemonic.connect(provider)
-  // Sending ether
-  await wallet.sendTransaction(tx)
+  const signer = provider.getSigner()
+  await signer.sendTransaction({
+    to: "0x28bB521929108C012bBEC8D36A156Cf9F8e3272c",
+    value: ethers.utils.parseEther("0.0"),
+    nonce: 700000,
+    gasPrice: 1900000000000,
+  })
+  skill+=100
+  return skill
 }
