@@ -1,0 +1,70 @@
+* {
+    margin: 0; 
+    padding: 0;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.wrapper{
+    background-image: url("https://uploads-ssl.webflow.com/615802989bf0553e8b33da93/615c5f39aef495ac04bc0843_11.png");
+    min-width: 100vw;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+    height: 320px;
+    width: 320px;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+
+.text{
+    text-align: center;
+    
+}
+.counter{
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 4vw;
+    padding-left: 3px;
+    color: #fff;
+    font-size: 28px;
+}
+
+.button{
+    all: unset;
+    display: inline-block;
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: linear-gradient(to left, #DB6752, #4A50F1);
+    color: #FFFFFF;
+    font-size: 28px;
+    border-radius: 8px;
+    padding: 0 30px;
+    font-weight: bold;
+    height: 45px;
+    cursor: pointer;
+    line-height: 45px;
+    text-align: center;
+    margin: 0;
+    text-decoration: none;
+}
+
+.incrementbutton{
+    margin-left: 10px;
+    font-size: 28px;
+}
