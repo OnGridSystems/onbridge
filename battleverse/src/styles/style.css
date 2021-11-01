@@ -19,12 +19,25 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
+}
+
+.token{
+    height: 320px;
+    width: 320px;
+    align-self: center;
+}
+
+.tokenname{
+    align-self: center;
+    text-align: left;
+    margin-top: 10px;
+    font-size: 20px;
 }
 
 .logo{
-    height: 320px;
-    width: 320px;
+    height: 200px;
+    width: 200px;
     position: absolute;
     top: 30px;
     left: 30px;
@@ -40,7 +53,7 @@ img {
     margin-bottom: 4vw;
     padding-left: 3px;
     color: #fff;
-    font-size: 28px;
+    font-size: 20px;
 }
 
 .button{
@@ -52,7 +65,7 @@ img {
     text-overflow: ellipsis;
     background: linear-gradient(to left, #DB6752, #4A50F1);
     color: #FFFFFF;
-    font-size: 28px;
+    font-size: 20px;
     border-radius: 8px;
     padding: 0 30px;
     font-weight: bold;
@@ -66,5 +79,5 @@ img {
 
 .incrementbutton{
     margin-left: 10px;
-    font-size: 28px;
+    font-size: 20px;
 }
