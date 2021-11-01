@@ -7,14 +7,24 @@ This prototype WILL BE built during [BSC Gamefi Hackathon](https://hidorahacks.m
 ## Build and run
 
 ```sh
-export UPSTREAM=https://rinkeby.infura.io/v3/<secret>
+export L1_UPSTREAM=https://rinkeby.infura.io/v3/<secret>
+export L1_CHAIN_ID=4
+export L1_BRIDGE_ADDRESS=0x9cB066EA2331F92f892b678C0339706Dcb6e5572
+export L1_TOKEN_ADDRESS=0x97ea372254e8bF2Da32fD2756934d798C12bef54
+export L1_START_BLOCK=9561926
+export L2_UPSTREAM=https://data-seed-prebsc-1-s1.binance.org:8545/
+export L2_CHAIN_ID=97
+export L2_BRIDGE_ADDRESS=0x4ec28d7b5A0daE81A4ac4aE017BfE17786aE7aB2
+export L2_TOKEN_ADDRESS=0x49d25DD6a5BC2993c1A4762F826065940909Ee5F
+export L2_START_BLOCK=13708587
 export TOKEN_ABI_FILENAME=erc721-abi.json
-export TOKEN_ADDRESS=0x9d5eD1b12E2BB47E3bDdCC3638376B792b94530B
 export DB_USER=api
 export DB_PASSWORD=api
 export DB_NAME=api
 export ADMIN_USER=admin
 export ADMIN_PASSWORD=admin
+export REACT_APP_API_HOST=https://api.onbridge.io/api
+export SECRET_KEY=<secret>
 
 DOCKER_HOST=ssh://root@<host> docker compose up -d --build --force-recreate
 ```
