@@ -90,6 +90,13 @@ services:
         REACT_APP_API_HOST: '${REACT_APP_API_HOST}'
     image: app
     restart: on-failure
+  
+  battleverse:
+    build:
+      context: ./battleverse
+      dockerfile: Dockerfile
+    image: battleverse
+    restart: on-failure
 
 volumes:
   static:
