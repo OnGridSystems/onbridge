@@ -12,8 +12,7 @@ const connectorsByName = {
 }
 
 export function Web3status({ type, ...props }) {
-  const { connector, account, activate, deactivate, active, error } =
-    useWeb3React()
+  const { connector, activate, deactivate, active, error } = useWeb3React()
   const wrongNetwork = error instanceof UnsupportedChainIdError
 
   // handle logic to recognize the connector currently being activated
@@ -30,9 +29,6 @@ export function Web3status({ type, ...props }) {
   // handle logic to connect in reaction to certain events on the injected ethereum provider, if it exists
   useInactiveListener(!triedEager || !!activatingConnector)
 
-  const accountValue =
-    account === undefined ? '...' : account === null ? 'None' : account
-
   const Status = ({ type }) =>
     active ? (
       <div type={type}></div>
@@ -41,7 +37,7 @@ export function Web3status({ type, ...props }) {
         {wrongNetwork && connector === injected ? 'Wrong network' : 'Error'}
       </div>
     ) : (
-      <div type={type}>Connect wallet</div>
+      <></>
     )
 
   const StatusContent = () => {
@@ -53,7 +49,7 @@ export function Web3status({ type, ...props }) {
       <>
         <span>Error</span>
         <button
-          className="button"
+          className='button'
           onClick={() => {
             if (connector === injected) {
               deactivate()
@@ -70,9 +66,7 @@ export function Web3status({ type, ...props }) {
         return <TryAgain />
       }
 
-      return (
-        <></>
-      )
+      return <></>
     }
 
     if (error) {
@@ -83,7 +77,6 @@ export function Web3status({ type, ...props }) {
       <>
         {Object.keys(connectorsByName).map(name => {
           const currentConnector = connectorsByName[name].connector
-          const activating = currentConnector === activatingConnector
           const connected = currentConnector === connector
           const disabled =
             !triedEager || !!activatingConnector || connected || !!error
@@ -94,9 +87,13 @@ export function Web3status({ type, ...props }) {
           }
 
           return (
-            <button className="button" disabled={disabled} key={name} onClick={connectFunction}>
+            <button
+              className='button'
+              disabled={disabled}
+              key={name}
+              onClick={connectFunction}
+            >
               {connectorsByName[name].text}&nbsp;
-          
             </button>
           )
         })}
@@ -105,7 +102,7 @@ export function Web3status({ type, ...props }) {
   }
 
   return (
-    <div {...props}>
+    <div className='web3status' {...props}>
       <StatusContent />
       <Status type={type} />
     </div>

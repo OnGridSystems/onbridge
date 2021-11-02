@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { Web3ReactProvider } from '@web3-react/core'
 
-import { App } from './App';
+import { App } from './App'
 import { getLibrary } from './utils/web3/getLibrary'
 import './styles/style.css'
 
@@ -13,4 +13,4 @@ ReactDOM.render(
     </Web3ReactProvider>
   </React.StrictMode>,
   document.getElementById('root')
-);
+)
