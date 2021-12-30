@@ -1,6 +1,5 @@
 version: '3'
 services:
-
   ingress:
     build: ./ingress/
     ports:
@@ -136,9 +135,11 @@ services:
       dockerfile: Dockerfile
       args:
         REACT_APP_API_HOST: '${REACT_APP_API_HOST}'
+        REACT_APP_L1_CHAIN_ID: '${REACT_APP_L1_CHAIN_ID}'
+        REACT_APP_L2_CHAIN_ID: '${REACT_APP_L2_CHAIN_ID}'
     image: app
     restart: on-failure
-  
+
   battleverse:
     build:
       context: ./battleverse
