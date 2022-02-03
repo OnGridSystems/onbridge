@@ -3,9 +3,10 @@ services:
   ingress:
     build: ./ingress/
     ports:
-      - 80:80
+      - 443:443
     image: ingress
     volumes:
+      - /etc/ssl:/etc/ssl
       - static:/static
     restart: on-failure
     depends_on:
@@ -81,55 +82,8 @@ services:
     depends_on:
       - api_db
 
-  oracle_l1:
-    image: api
-    build: ./api
-    environment:
-      SECRET_KEY: '${SECRET_KEY}'
-      PRIVATE_KEY: '${PRIVATE_KEY}'
-      GAS_PRICE: '${L1_GAS_PRICE}'
-      L1_UPSTREAM: '${L1_UPSTREAM}'
-      L2_UPSTREAM: '${L2_UPSTREAM}'
-      L1_BRIDGE_ABI_FILENAME: 'bridge-abi-L1.json'
-      L2_BRIDGE_ABI_FILENAME: 'bridge-abi-L2.json'
-      TOKEN_ADDRESS: '${L1_TOKEN_ADDRESS}'
-      L1_BRIDGE_ADDRESS: '${L1_BRIDGE_ADDRESS}'
-      L2_BRIDGE_ADDRESS: '${L2_BRIDGE_ADDRESS}'
-      DB_NAME: '${DB_NAME}'
-      DB_USER: '${DB_USER}'
-      DB_PASSWORD: '${DB_PASSWORD}'
-      DB_PORT: '5432'
-      DB_HOST: api_db
-    command: python3 oracle_worker_L1.py
-    restart: on-failure
-    depends_on:
-      - api_db
-
-  oracle_l2:
-    image: api
-    build: ./api
-    environment:
-      SECRET_KEY: '${SECRET_KEY}'
-      PRIVATE_KEY: '${PRIVATE_KEY}'
-      GAS_PRICE: '${L1_GAS_PRICE}'
-      L1_UPSTREAM: '${L1_UPSTREAM}'
-      L2_UPSTREAM: '${L2_UPSTREAM}'
-      L1_BRIDGE_ABI_FILENAME: 'bridge-abi-L1.json'
-      L2_BRIDGE_ABI_FILENAME: 'bridge-abi-L2.json'
-      TOKEN_ADDRESS: '${L1_TOKEN_ADDRESS}'
-      L1_BRIDGE_ADDRESS: '${L1_BRIDGE_ADDRESS}'
-      L2_BRIDGE_ADDRESS: '${L2_BRIDGE_ADDRESS}'
-      DB_NAME: '${DB_NAME}'
-      DB_USER: '${DB_USER}'
-      DB_PASSWORD: '${DB_PASSWORD}'
-      DB_PORT: '5432'
-      DB_HOST: api_db
-    command: python3 oracle_worker_L2.py
-    restart: on-failure
-    depends_on:
-      - api_db
-
   app:
+    image: app
     build:
       context: ./app
       dockerfile: Dockerfile
@@ -137,7 +91,6 @@ services:
         REACT_APP_API_HOST: '${REACT_APP_API_HOST}'
         REACT_APP_L1_CHAIN_ID: '${REACT_APP_L1_CHAIN_ID}'
         REACT_APP_L2_CHAIN_ID: '${REACT_APP_L2_CHAIN_ID}'
-    image: app
     restart: on-failure
 
   battleverse:
