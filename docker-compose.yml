@@ -8,6 +8,7 @@ services:
     volumes:
       - /etc/ssl:/etc/ssl
       - static:/static
+      - media:/media
     restart: on-failure
     depends_on:
       - api
@@ -27,6 +28,7 @@ services:
     build: ./api
     volumes:
       - static:/static/
+      - media:/app/media/
     environment:
       SECRET_KEY: '${SECRET_KEY}'
       DB_NAME: '${DB_NAME}'
@@ -47,6 +49,8 @@ services:
   indexer_l1:
     image: api
     build: ./api
+    volumes:
+      - media:/app/media/
     environment:
       SECRET_KEY: '${SECRET_KEY}'
       UPSTREAM: '${L1_UPSTREAM}'
@@ -103,3 +107,4 @@ services:
 volumes:
   static:
   db:
+  media:
