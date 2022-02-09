@@ -1,0 +1,11 @@
+{
+  "name": "Pirate",
+  "description": "Pirate that shines",
+  "image": "https://ipfs.io/ipfs/QmcsXTvsFrZXBLUsUuSWyP8x18xwhCgnmD8KwsijtuXk1e/11.png",
+  "attributes": [
+    {
+      "trait_type": "name",
+      "value": "just noname pirate"
+    }
+  ]
+}
