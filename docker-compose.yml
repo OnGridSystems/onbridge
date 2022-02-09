@@ -97,13 +97,6 @@ services:
         REACT_APP_L2_CHAIN_ID: '${REACT_APP_L2_CHAIN_ID}'
     restart: on-failure
 
-  battleverse:
-    build:
-      context: ./battleverse
-      dockerfile: Dockerfile
-    image: battleverse
-    restart: on-failure
-
 volumes:
   static:
   db:
