@@ -1,45 +1,52 @@
 # NFT bridge for advanced GameFi mechanics
 
-## About
+[OnBridge.io](https://onbridge.io/) is open and trusted framework for bridging NFTs across various metaverses, chains and GameFi DApps!
 
-This prototype WILL BE built during [BSC Gamefi Hackathon](https://hidorahacks.medium.com/application-guide-bsc-gamefi-hackathon-russia-eastern-europe-dc173c9250e9).
+## History
+
+* October 2021: Early prototype of the bridge was built on [BSC Gamefi Hackathon](https://hidorahacks.medium.com/application-guide-bsc-gamefi-hackathon-russia-eastern-europe-dc173c9250e9) and ranked 1st. [Hackerlink](https://hackerlink.io/buidl/1606?roundProj=1184)
+
+* November 2021: Got $10K of DoraHacks community donations. Decided to spend these funds to integrate decentralized crosschain interop protocol (CIP).
+
+* December 2021: Got 10K grant from Polygon. Integrated with deBridge CIP. 
+
+* January 2022: Applied to the Most Valuable Builder acceleration program of Binance and elected as participant of [Wave-IV](https://twitter.com/BinanceChain/status/1485972580041433089).
+
+* February 2022: Released v0.2.0-dbr-kovan-bsc - the first publicly available bridge with decentralized cross-chain interoperability layer under the hood. Operates between kovan and bsc testnets for custom ERC-721 of OnBridge.
 
 ## Build and run
 
 ```sh
-export L1_UPSTREAM=https://rinkeby.infura.io/v3/<secret>
-export L1_CHAIN_ID=4
-export L1_BRIDGE_ADDRESS=0x9cB066EA2331F92f892b678C0339706Dcb6e5572
-export L1_TOKEN_ADDRESS=0x97ea372254e8bF2Da32fD2756934d798C12bef54
-export L1_START_BLOCK=9561926
-export L2_UPSTREAM=https://data-seed-prebsc-1-s1.binance.org:8545/
+export SECRET_KEY=<secret>  
+export DB_PASSWORD=<secret>
+export DB_HOST=<db>
+export DB_NAME=<secret>
+export DB_USER=<secret>
+export ADMIN_USER=<admin_user>
+export ADMIN_PASSWORD=<admin_pass>
+
+export L1_CHAIN_ID=42
 export L2_CHAIN_ID=97
-export L2_BRIDGE_ADDRESS=0x4ec28d7b5A0daE81A4ac4aE017BfE17786aE7aB2
-export L2_TOKEN_ADDRESS=0x49d25DD6a5BC2993c1A4762F826065940909Ee5F
-export L2_START_BLOCK=13708587
-export TOKEN_ABI_FILENAME=erc721-abi.json
-export DB_USER=api
-export DB_PASSWORD=api
-export DB_NAME=api
-export ADMIN_USER=admin
-export ADMIN_PASSWORD=admin
-export REACT_APP_API_HOST=https://api.onbridge.io/api
+export L1_START_BLOCK=29747207
+export L2_START_BLOCK=16614491
+
+# take from deployments
+export L1_UPSTREAM="https://kovan.infura.io/v3/<YOUR_INFURA_KEY>"
+export L1_TOKEN_ADDRESS="0xE003C1167eBb252e55F72Fb187452AD19595F39c"
+export TOKEN_ABI_FILENAME='erc721-abi.json'
+export L1_BRIDGE_ADDRESS="0x0b92C823Dca8bab789eF85a11e95A6C72bd4cB27"
+
+export L2_UPSTREAM="https://data-seed-prebsc-1-s1.binance.org:8545/"
+export L2_TOKEN_ADDRESS="0x0DB7AE37d37881DE3876E4b74a6D818F5e656d05"
+export TOKEN_ABI_FILENAME='erc721-abi.json'
+export L2_BRIDGE_ADDRESS="0x152d8e56cc7795bbD401331cb94D8b83fa6BA3BB"
+
+export REACT_APP_API_HOST='https://api.onbridge.io/api'
 export REACT_APP_L1_CHAIN_ID=42
 export REACT_APP_L2_CHAIN_ID=97
-export SECRET_KEY=<secret>
-export PRIVATE_KEY=<secret>
-export L1_GAS_PRICE=18000000000
-export L2_GAS_PRICE=18000000000
-export L1_BRIDGE_ABI_FILENAME=bridge-abi-L1.json
-export L2_BRIDGE_ABI_FILENAME=bridge-abi-L2.json
-
 
 DOCKER_HOST=ssh://root@<host> docker compose up -d --build --force-recreate
 ```
-
-## Progress
-
-* 28.11.2021 - submitted hackathon [application](https://bscscan.com/tx/0x023b101e6d9888891aff07afc85ce6b3998601ebb23e68e4c5e385379dd97e9b). Waiting for approval and here we BUIDL!
 
 ## Architecture
 
@@ -52,6 +59,8 @@ To migrate L2 NFT back to origin network, L2 bridge burns L2 token and L1 bridge
 that improves quiality of life.
 
 * **Oracles**: Decentralized algorithm that observes the contract states on L1 and L2 and replicates the changes and events between the networks. Includes consensus rules and incentivation of fair behavior.
+
+[More details](https://github.com/Onbridge-io)
 
 ## License
 
