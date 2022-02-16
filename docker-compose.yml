@@ -38,25 +38,27 @@ services:
       DB_HOST: api_db
       ADMIN_USER: '${ADMIN_USER}'
       ADMIN_PASSWORD: '${ADMIN_PASSWORD}'
-      L1_CHAIN_ID: '${L1_CHAIN_ID}'
-      L2_CHAIN_ID: '${L2_CHAIN_ID}'
-      L1_START_BLOCK: '${L1_START_BLOCK}'
-      L2_START_BLOCK: '${L2_START_BLOCK}'
+      BSC_CHAIN_ID: '${BSC_CHAIN_ID}'
+      BSC_START_BLOCK: '${BSC_START_BLOCK}'
+      ETH_CHAIN_ID: '${ETH_CHAIN_ID}'
+      ETH_START_BLOCK: '${ETH_START_BLOCK}'
+      POLYGON_CHAIN_ID: '${POLYGON_CHAIN_ID}'
+      POLYGON_START_BLOCK: '${POLYGON_START_BLOCK}'
     restart: on-failure
     depends_on:
       - api_db
 
-  indexer_l1:
+  bsc_indexer:
     image: api
     build: ./api
     volumes:
       - media:/app/media/
     environment:
       SECRET_KEY: '${SECRET_KEY}'
-      UPSTREAM: '${L1_UPSTREAM}'
+      UPSTREAM: '${BSC_UPSTREAM}'
       TOKEN_ABI_FILENAME: 'erc721-abi.json'
-      TOKEN_ADDRESS: '${L1_TOKEN_ADDRESS}'
-      BRIDGE_ADDRESS: '${L1_BRIDGE_ADDRESS}'
+      TOKEN_ADDRESS: '${BSC_TOKEN_ADDRESS}'
+      BRIDGE_ADDRESS: '${BSC_BRIDGE_ADDRESS}'
       DB_NAME: '${DB_NAME}'
       DB_USER: '${DB_USER}'
       DB_PASSWORD: '${DB_PASSWORD}'
@@ -67,15 +69,34 @@ services:
     depends_on:
       - api_db
 
-  indexer_l2:
+  polygon_indexer:
     image: api
     build: ./api
     environment:
       SECRET_KEY: '${SECRET_KEY}'
-      UPSTREAM: '${L2_UPSTREAM}'
+      UPSTREAM: '${POLYGON_UPSTREAM}'
       TOKEN_ABI_FILENAME: 'erc721-abi.json'
-      TOKEN_ADDRESS: '${L2_TOKEN_ADDRESS}'
-      BRIDGE_ADDRESS: '${L2_BRIDGE_ADDRESS}'
+      TOKEN_ADDRESS: '${POLYGON_TOKEN_ADDRESS}'
+      BRIDGE_ADDRESS: '${POLYGON_BRIDGE_ADDRESS}'
+      DB_NAME: '${DB_NAME}'
+      DB_USER: '${DB_USER}'
+      DB_PASSWORD: '${DB_PASSWORD}'
+      DB_PORT: '5432'
+      DB_HOST: api_db
+    command: python3 indexer_worker.py
+    restart: on-failure
+    depends_on:
+      - api_db
+
+  eth_indexer:
+    image: api
+    build: ./api
+    environment:
+      SECRET_KEY: '${SECRET_KEY}'
+      UPSTREAM: '${ETH_UPSTREAM}'
+      TOKEN_ABI_FILENAME: 'erc721-abi.json'
+      TOKEN_ADDRESS: '${ETH_TOKEN_ADDRESS}'
+      BRIDGE_ADDRESS: '${ETH_BRIDGE_ADDRESS}'
       DB_NAME: '${DB_NAME}'
       DB_USER: '${DB_USER}'
       DB_PASSWORD: '${DB_PASSWORD}'
@@ -93,8 +114,6 @@ services:
       dockerfile: Dockerfile
       args:
         REACT_APP_API_HOST: '${REACT_APP_API_HOST}'
-        REACT_APP_L1_CHAIN_ID: '${REACT_APP_L1_CHAIN_ID}'
-        REACT_APP_L2_CHAIN_ID: '${REACT_APP_L2_CHAIN_ID}'
     restart: on-failure
 
 volumes:
