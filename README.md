@@ -18,32 +18,34 @@
 
 ```sh
 export SECRET_KEY=<secret>  
-export DB_PASSWORD=<secret>
-export DB_HOST=<db>
-export DB_NAME=<secret>
-export DB_USER=<secret>
+export DB_PASSWORD=<secret> 
+export DB_HOST=<secret> 
+export DB_NAME=<secret> 
+export DB_USER=<secret> 
 export ADMIN_USER=<admin_user>
 export ADMIN_PASSWORD=<admin_pass>
 
-export L1_CHAIN_ID=42
-export L2_CHAIN_ID=97
-export L1_START_BLOCK=29747207
-export L2_START_BLOCK=16614491
+export BSC_CHAIN_ID=97
+export BSC_START_BLOCK=16780309
+export ETH_CHAIN_ID=42
+export ETH_START_BLOCK=29835039
+export POLYGON_CHAIN_ID=80001
+export POLYGON_START_BLOCK=24932906
 
-# take from deployments
-export L1_UPSTREAM="https://kovan.infura.io/v3/<YOUR_INFURA_KEY>"
-export L1_TOKEN_ADDRESS="0xE003C1167eBb252e55F72Fb187452AD19595F39c"
+export ETH_UPSTREAM=<rpc provider url> 
+export POLYGON_UPSTREAM=<rpc provider url> 
+export BSC_UPSTREAM=<rpc provider url> 
 export TOKEN_ABI_FILENAME='erc721-abi.json'
-export L1_BRIDGE_ADDRESS="0x0b92C823Dca8bab789eF85a11e95A6C72bd4cB27"
 
-export L2_UPSTREAM="https://data-seed-prebsc-1-s1.binance.org:8545/"
-export L2_TOKEN_ADDRESS="0x0DB7AE37d37881DE3876E4b74a6D818F5e656d05"
-export TOKEN_ABI_FILENAME='erc721-abi.json'
-export L2_BRIDGE_ADDRESS="0x152d8e56cc7795bbD401331cb94D8b83fa6BA3BB"
+# update addresses after deploy contracts
+export ETH_TOKEN_ADDRESS="0x45c037263752F1d1F8cA94fAff339A0178C06EEb"
+export ETH_BRIDGE_ADDRESS="0xBa32a080612eA433FD64F4C5c99c73666149e997"
+export BSC_TOKEN_ADDRESS="0xe6847645B1832B2923e5938ec482f2b0EfA6DE4c"
+export BSC_BRIDGE_ADDRESS="0x099e3307be3b694e8C7dBc54E2ecB8897806BD2A"
+export POLYGON_TOKEN_ADDRESS="0xc303c254529542bfCbCCE275Bb8c819fD8fFdb03"
+export POLYGON_BRIDGE_ADDRESS="0xF6C9DaF74f99388c2C666b0468a9f1D1601c0013"
 
-export REACT_APP_API_HOST='https://api.onbridge.io/api'
-export REACT_APP_L1_CHAIN_ID=42
-export REACT_APP_L2_CHAIN_ID=97
+export REACT_APP_API_HOST='https://onbridge.io/api'
 
 DOCKER_HOST=ssh://root@<host> docker compose up -d --build --force-recreate
 ```
