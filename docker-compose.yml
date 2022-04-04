@@ -56,7 +56,7 @@ services:
     environment:
       SECRET_KEY: '${SECRET_KEY}'
       UPSTREAM: '${BSC_UPSTREAM}'
-      TOKEN_ABI_FILENAME: 'erc721-abi.json'
+      TOKEN_ABI_FILENAME: 'token_indexer/erc721-abi.json'
       TOKEN_ADDRESS: '${BSC_TOKEN_ADDRESS}'
       BRIDGE_ADDRESS: '${BSC_BRIDGE_ADDRESS}'
       INDEXER_INTERVAL: '${INDEXER_INTERVAL}'
@@ -66,7 +66,7 @@ services:
       DB_PORT: '5432'
       DB_HOST: api_db
       IPFS_HOST: '${IPFS_HOST}'
-    command: python3 indexer_worker.py
+    command: python3 token_indexer/start.py
     restart: on-failure
     depends_on:
       - api_db
@@ -79,7 +79,7 @@ services:
     environment:
       SECRET_KEY: '${SECRET_KEY}'
       UPSTREAM: '${POLYGON_UPSTREAM}'
-      TOKEN_ABI_FILENAME: 'erc721-abi.json'
+      TOKEN_ABI_FILENAME: 'token_indexer/erc721-abi.json'
       TOKEN_ADDRESS: '${POLYGON_TOKEN_ADDRESS}'
       BRIDGE_ADDRESS: '${POLYGON_BRIDGE_ADDRESS}'
       INDEXER_INTERVAL: '${INDEXER_INTERVAL}'
@@ -89,7 +89,7 @@ services:
       DB_PORT: '5432'
       DB_HOST: api_db
       IPFS_HOST: '${IPFS_HOST}'
-    command: python3 indexer_worker.py
+    command: python3 token_indexer/start.py
     restart: on-failure
     depends_on:
       - api_db
@@ -102,7 +102,7 @@ services:
     environment:
       SECRET_KEY: '${SECRET_KEY}'
       UPSTREAM: '${ETH_UPSTREAM}'
-      TOKEN_ABI_FILENAME: 'erc721-abi.json'
+      TOKEN_ABI_FILENAME: 'token_indexer/erc721-abi.json'
       TOKEN_ADDRESS: '${ETH_TOKEN_ADDRESS}'
       BRIDGE_ADDRESS: '${ETH_BRIDGE_ADDRESS}'
       INDEXER_INTERVAL: '${INDEXER_INTERVAL}'
@@ -112,7 +112,7 @@ services:
       DB_PORT: '5432'
       DB_HOST: api_db
       IPFS_HOST: '${IPFS_HOST}'
-    command: python3 indexer_worker.py
+    command: python3 token_indexer/start.py
     restart: on-failure
     depends_on:
       - api_db
